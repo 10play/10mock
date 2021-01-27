@@ -1,0 +1,10 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/users",
+    "response": {
+      "body": [{ "id": 1, "name": "guy" }],
+      "status": 201
+    }
+  }
+]
