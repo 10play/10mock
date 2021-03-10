@@ -81,4 +81,25 @@ describe("GET / - a simple api endpoint", () => {
     expect(privateApi.status).toEqual(404);
 
   });
+
+  it("Should be able to override the same route and then delete them all", async () => {
+    const userRoute = "/users/info"
+    const numberOfRequests: number[] = [1, 2, 3, 4, 5]
+    numberOfRequests.forEach(async _ => {
+      await request(app).post(adminPath).send({
+        method: "get",
+        path: userRoute,
+        response: {
+          body: { users: [{ name: 'guy' }] },
+          status: 200
+
+        }
+      })
+    })
+    await request(app).delete(adminPath + "/all")
+
+    let usersApi = await request(app).get(userRoute);
+    expect(usersApi.status).toEqual(404)
+
+  })
 });

@@ -5,6 +5,7 @@ const { PROXY_URL } = process.env
 
 let mockHandlers: any = {};
 const adminPath = '/_routes'
+const adminPathDeleteAll = `${adminPath}/all`
 
 const getRouteKey = (method: Method, path: string) => `[${method}]${path}`
 
@@ -31,7 +32,10 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log('ffff', req.url)
+  // TODO: That should log only route that not related to adminPath
+  if (req.url !== adminPath && req.url !== adminPathDeleteAll) {
+    console.log('Got request:', req.url)
+  }
   next();
 })
 
@@ -59,15 +63,18 @@ app.get(adminPath, (req, res) => {
 });
 
 app.post(adminPath, (req, res) => {
-  console.log('this is the body', req.body)
   const {
     method,
     path,
     response,
   }: AddRouteBody = req.body
+  console.log(`New mock for route: [${method}]${path}`)
   if (!method || !path || !response) {
     return res.status(500).json('Should provide : !method || ! path || !response')
   }
+
+  const routes = app._router.stack;
+  routes.forEach((route: any, i: number, routes: any) => removeMiddlewares(route, i, routes, method, path));
 
   const newRouteKey = getRouteKey(method, path);
 
@@ -78,13 +85,12 @@ app.post(adminPath, (req, res) => {
     response,
     stubRequests: [],
     middleware: (req: any, res: any) => {
-      console.log('send back response000:', JSON.stringify(response.body))
       mockHandlers[newRouteKey].count += 1;
       mockHandlers[newRouteKey].stubRequests.push({ params: req.params, query: req.query, body: req.body, headers: req.headers });
       if (PROXY_URL) {
         return res.status(301).redirect(PROXY_URL + path)
       }
-      console.log('send back response:', response.body)
+      console.log(`Mock [${method}]${path} response with body:`, JSON.stringify(response.body, null, 2))
       return res.status(response.status || 200).json(response.body)
     }
   }
@@ -104,7 +110,7 @@ app.delete(adminPath, (req, res) => {
 });
 
 
-app.delete(adminPath + "/all", (req, res) => {
+app.delete(adminPathDeleteAll, (req, res) => {
   try {
     for (const handler in mockHandlers) {
       const { method, path } = extractRouteKey(handler)
