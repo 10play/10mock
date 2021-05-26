@@ -1,7 +1,6 @@
 import { Method, Route } from "./types";
 
-const API_URL = (port: number | string = 8000) =>
-  `http://localhost:8000${port}`;
+const API_URL = (port: number | string = 8000) => `http://localhost:${port}`;
 const ADMIN_PATH = "/_routes";
 global.fetch = require("node-fetch");
 

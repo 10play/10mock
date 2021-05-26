@@ -11,7 +11,7 @@ requests fast and easy.
 npm install -g 10mock
 
 10mock -p 8080
-[10mock]: Server is running at https://localhost:8080
+[10mock]: Server is running at http://localhost:8080
 ```
 
 or as a regular NPM module:
@@ -20,6 +20,6 @@ or as a regular NPM module:
 npm install -D 10mock
 npx 10mock
 
-[10mock]: Server is running at https://localhost:8000
+[10mock]: Server is running at http://localhost:8000
 
 ```
