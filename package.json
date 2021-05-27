@@ -10,7 +10,7 @@
   "homepage": "https://github.com/10play/10mock",
   "scripts": {
     "test": "jest",
-    "build": "tsc --project ./",
+    "build": "rm -rf build && tsc --project ./",
     "start": "nodemon index.ts",
     "startProxy": "PROXY_URL=http://localhost:5000 nodemon index.ts"
   },
