@@ -2,7 +2,7 @@ name: Ios tests only
 
 on:
   push:
-    branches: [main, client-for-mocking]
+    branches: [master, client-for-mocking]
 jobs:
   build:
     runs-on: ubuntu-latest
