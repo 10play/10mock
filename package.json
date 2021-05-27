@@ -1,6 +1,6 @@
 {
   "name": "10mock",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Mid testing mock server for client-side testing.",
   "main": "build/index.js",
   "repository": {
