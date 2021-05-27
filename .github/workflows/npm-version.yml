@@ -30,10 +30,10 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Version update
-        uses: codfish/semantic-release-action@v1
+     - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+        run: npx semantic-release
+        
       - run: echo ${{ steps.semantic.outputs.release-version }}
