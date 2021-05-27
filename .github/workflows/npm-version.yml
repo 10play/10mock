@@ -29,9 +29,12 @@ jobs:
 
       - name: Build package
         run: npm run build
-
-      # - name: Updating version
-      # run: npm version minor
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag-prefix: ""
 
       - name: Publish to npm
         run: npm publish

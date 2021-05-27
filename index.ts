@@ -10,7 +10,7 @@ const isEntryPoint = () => {
 
 app.use(
   cors({
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     origin: "*",
     preflightContinue: true,
   })
