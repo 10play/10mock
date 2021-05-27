@@ -1,6 +1,6 @@
 {
   "name": "10mock",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Mid testing mock server for client-side testing.",
   "main": "build/index.js",
   "repository": {
@@ -58,6 +58,7 @@
     "nock"
   ],
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "stdio": "^2.1.1"
   },
