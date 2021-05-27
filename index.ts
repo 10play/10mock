@@ -8,7 +8,13 @@ const isEntryPoint = () => {
   return require.main === module;
 };
 
-app.use(cors());
+app.use(
+  cors({
+    allowedHeaders: ["Content-Type"],
+    origin: "*",
+    preflightContinue: true,
+  })
+);
 
 if (isEntryPoint()) {
   app.listen(PORT, () => {
