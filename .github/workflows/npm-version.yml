@@ -1,4 +1,4 @@
-name: Ios tests only
+name: Build and publish
 
 on:
   push:
