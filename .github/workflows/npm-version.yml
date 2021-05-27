@@ -30,8 +30,8 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Updating version
-        run: npm version minor
+      # - name: Updating version
+      # run: npm version minor
 
       - name: Publish to npm
         run: npm publish
