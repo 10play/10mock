@@ -31,9 +31,9 @@ jobs:
         run: npm run build
 
       - name: Updating version
-      - run: npm version minor
+        run: npm version minor
 
       - name: Publish to npm
-      - run: npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
