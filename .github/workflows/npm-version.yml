@@ -5,7 +5,7 @@ on:
     branches: [main, client-for-mocking]
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 100
     steps:
       - uses: actions/checkout@master
