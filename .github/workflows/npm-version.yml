@@ -30,9 +30,10 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Release
-        run: npx semantic-release
+      - name: Updating version
+      - run: npm version minor
+
+      - name: Publish to npm
+      - run: npm publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: echo ${{ steps.semantic.outputs.release-version }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
