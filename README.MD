@@ -27,8 +27,8 @@ npx 10mock
 Available options:
 <br/>
 
-1.  -p run the mock server on the specified port.
-2.  -x run the mock server as proxy server
+1.  -p \<port> run the mock server on the specified port, default port is 8000.
+2.  -x \<server url> run the mock server as proxy server
 
 10mock also supplies easy to use client:
 
@@ -43,7 +43,7 @@ export const api = new Api(optional-port);
 1. api.finishTest() - remove all mocked routes.
 2. api.nock(path).method(method).status(status).send(mocked-response);
 
-- create new mocked route &#8594; return object with these entities:
+- create new mocked route &#8594; returns object with these entities:
   - getCount &#8594; function thats returns the number of requests sent to this route.
   - getStubRequests &#8594; function thats returns all the requests sent to this route.
   - getStats &#8594; function thats returns getStubRequests and getCount results.
