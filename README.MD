@@ -43,7 +43,7 @@ export const api = new Api(optional-port);
 1. api.finishTest() - remove all mocked routes.
 2. api.nock(path).method(method).status(status).send(mocked-response);
 
-- create new mocked route &#8594; returns object with these entities:
+- Create new mocked route &#8594; returns object with these entities:
   - getCount &#8594; function thats returns the number of requests sent to this route.
   - getStubRequests &#8594; function thats returns all the requests sent to this route.
   - getStats &#8594; function thats returns getStubRequests and getCount results.

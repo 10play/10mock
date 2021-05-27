@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
+        with:
+          node-version: "12.x"
+          registry-url: "https://registry.npmjs.org"
       - name: Cache node modules
         uses: actions/cache@v1
         id: cache
@@ -23,3 +26,6 @@ jobs:
 
       - name: Test app
         run: npm run test
+
+      - name: Build package
+        run: npm run build
