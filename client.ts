@@ -78,7 +78,7 @@ export default class Api {
 
   async _handleRoutes(data: any, method: Method) {
     const response = await fetch(this.baseUrl + this.adminPath, {
-      method,
+      method: method.toLowerCase(),
       headers: {
         "Content-Type": "application/json",
       },
