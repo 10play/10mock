@@ -54,7 +54,8 @@
     "mock",
     "api",
     "react-native",
-    "rest"
+    "rest",
+    "nock"
   ],
   "dependencies": {
     "express": "^4.17.1",
